@@ -5,10 +5,16 @@ from django.shortcuts import render
 # Create your views here.
 def index(request):
     context = {
-        'title': 'Home sweet home',
-        'content' : 'main page - u r welcome'
+        'title': 'chicha home page',
+        'content' : 'bueeeeeeeeeeeeee'
     }
     return render(request, 'main/index.html', context)
 
 def about(request):
-    return HttpResponse('about')
+    context = {
+        'title': 'about chicha',
+        'content' : 'main page - u r welcome',
+        'text' : 'mad startup powered by shishaaaaaaaaaaaaaaaaaaaaaaaaaaaa4444444444444aaaaaaaaaaaaaaa'
+    }
+    return render(request, 'main/about.html', context)
+
