@@ -21,7 +21,7 @@ class Product(models.Model):
     description = models.TextField(blank=1, null=1, verbose_name='описание')
     image = models.ImageField(upload_to='goods_imgs', blank=1, null=1)
     price = models.DecimalField(default=0.00, max_digits=7, decimal_places=2, verbose_name='цена')
-    discount = models.DecimalField(default=0.00, max_digits=7, decimal_places=2, verbose_name='скидка')
+    discount = models.DecimalField(default=0.00, max_digits=4, decimal_places=2, verbose_name='скидка')
     quantity =  models.PositiveIntegerField(default=0, verbose_name='кол-во')
     category = models.ForeignKey(to=Categories, on_delete=models.CASCADE)
 
@@ -32,3 +32,12 @@ class Product(models.Model):
     
     def __str__(self) -> str:
         return f'{self.name} - {self.quantity}'
+    
+    def display_id(self):
+        return f'{self.id:05}'
+    
+    def total_price(self):
+        if self.discount :
+            return round(self.price*(100-self.discount)/100, 2)
+        else:
+            return self.price

@@ -11,7 +11,7 @@ def index(request):
     context = {
         'title': 'chicha home page',
         'content' : 'bueeeeeeeeeeeeee',
-        'catgrs' : Categories.objects.all()
+
     }
     return render(request, 'main/index.html', context)
 
