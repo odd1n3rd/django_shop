@@ -1,4 +1,5 @@
 
+from django.core.paginator import Paginator
 from django.shortcuts import render
 
 from goods.models import Product
@@ -8,6 +9,9 @@ from goods.models import Product
 def catalog(request):
 
     goods = Product.objects.all()
+    # paginator = Paginator(goods, 3)
+    # current_page = paginator.page(2)
+
     context = {
         "title": "our goods",
         "goods": goods,
